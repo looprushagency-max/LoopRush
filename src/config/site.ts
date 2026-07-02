@@ -1,0 +1,61 @@
+export const siteConfig = {
+  name: 'Loop Rush Agency',
+  tagline: 'Go Live. Earn More. Grow Faster.',
+  description: 'An official TikTok Creator Network agency helping live creators grow their audience, earn more diamonds, and unlock exclusive monthly bonuses — at zero cost to you.',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  navLinks: [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'How It Works', href: '/how-it-works' },
+    { label: 'Resources', href: '/resources' },
+    { label: 'Contact', href: '/contact' },
+  ],
+  social: {
+    tiktok: 'https://tiktok.com/@looprushagency',
+    instagram: 'https://instagram.com/looprushagency',
+    twitter: 'https://twitter.com/looprushagency',
+  },
+  stats: [
+    { label: 'Official TikTok Partner', value: '✓' },
+    { label: 'Agency Cut', value: '0%' },
+    { label: 'Diamonds Yours', value: '100%' },
+    { label: 'New Creator Bonus', value: '$100' },
+  ],
+  features: [
+    { icon: '💎', title: 'Monthly Diamond Bonuses', description: 'Earn exclusive monthly bonuses based on your diamond count, live days, and live hours. The more you stream, the bigger your reward.' },
+    { icon: '🤝', title: 'We Never Touch Your Gifts', description: 'Every diamond you earn goes directly to you. TikTok pays us separately on the backend — your earnings are 100% yours.' },
+    { icon: '📣', title: 'Free TikTok Promotions', description: 'We promote your live streams using TikTok\'s official promotion feature at absolutely no cost to you. More viewers, more diamonds.' },
+    { icon: '🎁', title: 'New Creator Welcome Bonus', description: 'Brand new to the agency? Earn 200K diamonds in your first month and receive a gift valued at $100 on us.' },
+    { icon: '📚', title: 'Live Streaming Support', description: 'Access our full library of TikTok live tips, tricks, and strategies. Get fast answers to the most common questions about going live.' },
+    { icon: '🌐', title: 'Creator Network', description: 'Join a network of driven live creators, share strategies, collaborate on battles, and grow together as a community.' },
+  ],
+  bonusTiers: [
+    { name: 'Leon the Kitten', emoji: '🦁', diamonds: 100000, diamondsLabel: '100K', liveDays: 12, liveHours: 25, reward: 'Leon the Kitten Gift', color: 'from-yellow-500 to-orange-500' },
+    { name: 'Leon and Lili', emoji: '🌹', diamonds: 250000, diamondsLabel: '250K', liveDays: 15, liveHours: 40, reward: 'Leon and Lili Gift', color: 'from-pink-500 to-rose-500' },
+    { name: 'Rose Nebula', emoji: '🌌', diamonds: 500000, diamondsLabel: '500K', liveDays: 20, liveHours: 80, reward: 'Rose Nebula Gift', color: 'from-purple-500 to-pink-500' },
+    { name: 'Dragon Flame', emoji: '🐉', diamonds: 750000, diamondsLabel: '750K', liveDays: 22, liveHours: 100, reward: 'Dragon Flame Gift', color: 'from-red-500 to-orange-600' },
+    { name: 'TikTok Universe', emoji: '🌍', diamonds: 1000000, diamondsLabel: '1M', liveDays: 24, liveHours: 100, reward: 'TikTok Universe Gift', color: 'from-tiktok-red to-tiktok-cyan' },
+  ],
+  newCreatorBonus: {
+    title: 'New Creator Welcome Bonus',
+    description: 'Earn 200,000 diamonds in your first month and receive a gift valued at $100!',
+    diamonds: 200000,
+    reward: '$100 Gift',
+  },
+  bonusNotes: [
+    'Diamonds are counted within one calendar month.',
+    'You must meet or exceed BOTH the days AND hours requirement.',
+    'Rewards are given at the end of the month.',
+    'Quality and consistency on LIVE matters!',
+  ],
+  about: {
+    mission: 'Loop Rush Agency exists to give live creators the support, tools, and bonuses they deserve — with zero cost and zero percentage taken from their earnings.',
+    story: 'Loop Rush Agency was built by streamers who understood what creators actually need: real support, fair pay, and a team that has their back. As an official TikTok Creator Network partner, we work directly with TikTok to help our creators grow, earn more, and go further — all while keeping 100% of their diamond earnings.',
+    team: [
+      { name: 'Isaiah', role: 'Owner', bio: 'A former A-League streamer who built Loop Rush Agency to give creators the support system he wished he had when starting out.' },
+      { name: 'Paulie', role: 'Creator Manager', bio: 'A current high-level TikTok streamer who brings firsthand knowledge of what it takes to grow and succeed on TikTok LIVE.' },
+      { name: 'Denika', role: 'Creator Manager', bio: 'Dedicated to helping creators hit their goals, tracking progress, and making sure every creator has what they need to succeed.' },
+      { name: 'Katie', role: 'Creator Recruiter', bio: 'Scouting and onboarding the next generation of TikTok live talent into the Loop Rush family.' },
+    ],
+  },
+}

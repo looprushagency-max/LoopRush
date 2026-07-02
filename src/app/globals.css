@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --tiktok-red: #FE2C55;
+    --tiktok-cyan: #25F4EE;
+    --tiktok-black: #010101;
+    --tiktok-dark: #121212;
+    --tiktok-card: #1C1C1C;
+    --tiktok-border: #2A2A2A;
+    --tiktok-muted: #8A8A8A;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--tiktok-black);
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--tiktok-dark);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--tiktok-border);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--tiktok-muted);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-tiktok-red to-tiktok-cyan bg-clip-text text-transparent;
+  }
+
+  .glow-red {
+    box-shadow: 0 0 30px rgba(254, 44, 85, 0.4);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 30px rgba(37, 244, 238, 0.4);
+  }
+
+  .glass {
+    background: rgba(28, 28, 28, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
