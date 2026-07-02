@@ -9,15 +9,15 @@ interface LogoProps {
 
 export function Logo({ size = 'md', href = '/' }: LogoProps) {
   const sizes = {
-    sm: 'text-xl',
-    md: 'text-2xl',
-    lg: 'text-4xl',
+    sm: 'text-lg',
+    md: 'text-xl',
+    lg: 'text-3xl',
   }
 
   const content = (
     <span className={`font-black tracking-tight ${sizes[size]}`}>
-      <span className="text-tiktok-red">Loop</span>
-      <span className="text-white">Rush</span>
+      <span className="text-tiktok-red">Loop Rush</span>
+      <span className="text-white"> Agency</span>
     </span>
   )
 
