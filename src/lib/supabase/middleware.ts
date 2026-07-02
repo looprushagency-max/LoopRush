@@ -1,62 +1,38 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-export async function updateSession(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({
-    request,
-  })
+type CookieToSet = { name: string; value: string; options?: Record<string, any> }
 
+export async function updateSession(request: NextRequest) {
+  let supabaseResponse = NextResponse.next({ request })
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll() {
-          return request.cookies.getAll()
-        },
-        setAll(cookiesToSet: { name: string; value: string; options?: any }[]) {
-          cookiesToSet.forEach(({ name, value }) =>
-            request.cookies.set(name, value)
-          )
-          supabaseResponse = NextResponse.next({
-            request,
-          })
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          )
+        getAll() { return request.cookies.getAll() },
+        setAll(cookiesToSet: CookieToSet[]) {
+          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
+          supabaseResponse = NextResponse.next({ request })
+          cookiesToSet.forEach(({ name, value, options }) => supabaseResponse.cookies.set(name, value, options))
         },
       },
     }
   )
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  // Auth-required routes
+  const { data: { user } } = await supabase.auth.getUser()
   const protectedRoutes = ['/dashboard/creator', '/dashboard/admin']
   const authRoutes = ['/login', '/register', '/forgot-password']
   const path = request.nextUrl.pathname
-
   if (!user && protectedRoutes.some((route) => path.startsWith(route))) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
   }
-
   if (user && authRoutes.some((route) => path.startsWith(route))) {
-    // Get user role and redirect to correct dashboard
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('role')
-      .eq('id', user.id)
-      .single()
-
+    const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single()
     const url = request.nextUrl.clone()
-    url.pathname =
-      profile?.role === 'admin' ? '/dashboard/admin' : '/dashboard/creator'
+    url.pathname = profile?.role === 'admin' ? '/dashboard/admin' : '/dashboard/creator'
     return NextResponse.redirect(url)
   }
-
   return supabaseResponse
 }
